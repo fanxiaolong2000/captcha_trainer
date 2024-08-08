@@ -565,6 +565,7 @@ class ModelConfig:
                 LabelFrom=self.label_from.value,
                 ExtractRegex=self.val_filter(self.extract_regex),
                 LabelSplit=self.val_filter(self.label_split),
+                # 更新路径
                 DatasetTrainsPath=self.list_param(self.trains_path[DatasetType.TFRecords], intent=6),
                 DatasetValidationPath=self.list_param(self.validation_path[DatasetType.TFRecords], intent=6),
                 SourceTrainPath=self.list_param(self.trains_path[DatasetType.Directory], intent=6),

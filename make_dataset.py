@@ -129,7 +129,7 @@ class DataSets:
         random.seed(0)
         random.shuffle(origin_dataset)
         return origin_dataset
-
+    
     def make_dataset(self, trains_path=None, validation_path=None, is_add=False, callback=None, msg=None):
         print("make_dataset传入参数信息:",trains_path,validation_path,is_add,callback,msg)
         if self.dataset_exists() and not is_add:

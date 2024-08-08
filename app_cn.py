@@ -926,6 +926,7 @@ class Wizard:
                 "Error!", "请先配置项目名."
             )
             return
+        # 弹出框询问：
         filename = filedialog.askdirectory()
         if not filename:
             return
@@ -936,9 +937,10 @@ class Wizard:
             return
 
         self.attach_dataset_val.set(filename)
+        # 训练集加入路径，这里很迷
         self.sample_map[DatasetType.Directory][RunMode.Trains].insert(tk.END, filename)
         self.button_state(self.btn_attach_dataset, tk.DISABLED)
-
+        # 输入界面显示+返回给model_config的path
         for mode in [RunMode.Trains, RunMode.Validation]:
             attached_dataset_name = model_conf.dataset_increasing_name(mode)
             attached_dataset_name = "dataset/{}".format(attached_dataset_name)
@@ -947,6 +949,7 @@ class Wizard:
             if mode == RunMode.Validation and self.validation_num_val.get() == 0:
                 continue
             self.sample_map[DatasetType.TFRecords][mode].insert(tk.END, attached_dataset_path)
+        # 调用 model_config的保存
         self.save_conf()
         model_conf = ModelConfig(self.current_project)
         self.threading_exec(
