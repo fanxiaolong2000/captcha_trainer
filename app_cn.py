@@ -932,6 +932,7 @@ class Wizard:
         model_conf = ModelConfig(self.current_project)
 
         if not self.check_dataset(model_conf):
+            # 检查路径是否存在
             return
 
         self.attach_dataset_val.set(filename)
